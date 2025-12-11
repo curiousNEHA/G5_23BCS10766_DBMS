@@ -44,7 +44,7 @@ from Students t1
 cross join
 Subjects t2
 ) as s1
-inner join
+left join
 Examinations e1
 on s1.student_id = e1.student_id
 and s1.subject_name = e1.subject_name
