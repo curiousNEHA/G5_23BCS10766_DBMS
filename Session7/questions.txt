@@ -1,0 +1,121 @@
+--G5-23BCS10766_Neha Sharma_Session07
+
+Q1. Consider a relation R having attributes as R(ABCD), functional dependencies are given below:
+AB->C, C->D, D->A
+Identify the set of candidate keys possible in relation R. List all the set of prime and non-prime attributes.
+
+Sol- Since attribute B never appears on the RHS of any dependency, it must be part of every candidate key.
+Closures:
+• (AB)+ = ABCD
+• (CB)+ = CBDA
+• (DB)+ = DBAC
+
+Keys:
+• Candidate Keys = {AB, CB, DB}
+• PA = {A, B, C}
+• NPA = {D}
+
+Normalization check:
+• In BCNF, the dependencies C->D and D->A violate BCNF because C and D are not superkeys.
+• In 3NF, all attributes are prime, so it is satisfied.
+• In 2NF, there are no partial dependencies, so it is satisfied.
+• In 1NF, the relation is already in 1NF as all attributes are atomic.
+
+Q2. Relation R(ABCDE) having functional dependencies as:
+A->D, B->A, BC->D, AC->BE
+Identify the set of candidate keys possible in relation R. List all the set of prime and non-prime attributes.
+
+Sol- Since attribute C never appears on the RHS of any dependency, it must be part of every candidate key.
+Closures:
+• (AC)+ = ACBED
+• (BC)+ = ACDBE
+
+Keys:
+• Candidate Keys = {AC, BC}
+• PA = {A, B, C}
+• NPA = {D, E}
+
+Normalization check:
+• In BCNF, dependencies A->D and B->A violate BCNF because A and B are not superkeys.
+• In 3NF, dependency B->A violates 3NF.
+• In 2NF, A->D is a partial dependency, so 2NF is violated.
+• In 1NF, the relation satisfies 1NF.
+
+Q3. Consider a relation R having attributes as R(ABCDE), functional dependencies are given below:
+B->A, A->C, BC->D, AC->BE
+Identify the set of candidate keys possible in relation R. List all the set of prime and non-prime attributes.
+
+Sol- All attributes appear on the RHS, so candidate keys are found using closure.
+Closures:
+• (A)+ = ACBED
+• (B)+ = BACDE
+
+Keys:
+• Candidate Keys = {A, B}
+• PA = {A, B}
+• NPA = {C, D, E}
+
+Normalization check:
+• In BCNF, all dependencies have superkeys on LHS, so BCNF is satisfied.
+• In 3NF, BCNF implies 3NF is satisfied.
+• In 2NF, no partial dependency exists, so 2NF is satisfied.
+• In 1NF, the relation satisfies 1NF.
+
+Q4. Consider a relation R having attributes as R(ABCDEF), functional dependencies are given below:
+A->BCD, BC->DE, B->D, D->A
+Identify the set of candidate keys possible in relation R. List all the set of prime and non-prime attributes.
+
+Sol- Since attribute F never appears on the RHS of any dependency, it must be part of every candidate key.
+Closures:
+• (AF)+ = ABCDEF
+• (BF)+ = BFEDAC
+• (DF)+ = DFABCE
+
+Keys:
+• Candidate Keys = {AF, BF, DF}
+• PA = {A, B, D, F}
+• NPA = {C, E}
+
+Normalization check:
+• In BCNF, dependencies A->BCD, B->D and D->A violate BCNF.
+• In 3NF, A->BCD violates 3NF because RHS has non-prime attributes.
+• In 2NF, no partial dependency exists, so 2NF is satisfied.
+• In 1NF, the relation satisfies 1NF.
+
+Q7. Relation R(ABCDE) having dependencies as:
+CE->D, D->B, C->A
+Highest normal form? C.K set?
+
+Sol- Since attributes C and E never appear on the RHS of any dependency, they must be part of every candidate key.
+Closures:
+• (CE)+ = CEDBA
+
+Keys:
+• Candidate Keys = {CE}
+• PA = {C, E}
+• NPA = {A, B, D}
+
+Normalization check:
+• In BCNF, dependencies D->B and C->A violate BCNF because D and C are not superkeys.
+• In 3NF, dependencies D->B and C->A violate 3NF.
+• In 2NF, partial dependency C->A exists, so 2NF is violated.
+• In 1NF, the relation satisfies 1NF.
+
+Q8. Relation R(ABCDEF) having dependencies as:
+AB->C, DC->AE, E->F
+Highest normal form? C.K set?
+
+Sol- Since attribute B and D never appear on the RHS of any dependency, they must be part of every candidate key.
+Closures:
+• (ABD)+ = ABCDEF
+
+Keys:
+• Candidate Keys = {ABD}
+• PA = {A, B, D}
+• NPA = {C, E, F}
+
+Normalization check:
+• In BCNF, dependencies AB->C and E->F violate BCNF because AB and E are not superkeys.
+• In 3NF, dependency E->F violates 3NF because E is not a superkey and F is a non-prime attribute.
+• In 2NF, partial dependency AB->C exists since AB is a proper subset of candidate key ABD, so 2NF is violated.
+• In 1NF, the relation satisfies 1NF as all attributes are atomic.
