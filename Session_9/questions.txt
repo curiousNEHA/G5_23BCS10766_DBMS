@@ -1,0 +1,92 @@
+--G5-23BCS10766_Neha Sharma_Session09
+
+Q13. Consider a relation R(ABCDEFGHIJ) having FDs as:
+AB->C
+AD->GH
+BD->EF
+A->I
+H->J
+Identify that relation is in which normal form and the candidate key by determining the prime and non-prime attributes. Apply the decomposition if needed to remove the redundancy. Identify how many new tables will be formed after the decomposition.
+
+Sol- Since attributes A, B and D never appear on the RHS of any dependency, they must be part of every candidate key.
+Closures:
+• (ABD)+ = ABCDEFGHIJ
+
+Keys:
+• Candidate Keys = {ABD}
+• PA = {A, B, D}
+• NPA = {C, E, F, G, H, I, J}
+
+Normalization check:
+• In BCNF, dependencies AB->C, AD->GH, BD->EF, A->I and H->J violate BCNF because their LHS are not superkeys.
+• In 3NF, dependencies AB->C, A->I and H->J violate 3NF as RHS contains non-prime attributes.
+• In 2NF, partial dependencies AB->C, AD->GH and A->I exist on candidate key ABD, so 2NF is violated.
+• In 1NF, the relation satisfies 1NF.
+
+Decomposition:
+R1(A, B, C)
+R2(A, D, G, H)
+R3(B, D, E, F)
+R4(A, I)
+R5(H, J)
+Number of new relations formed = 5
+
+Q14. Relation R having attributes as (A, B, C, D, E) having the functional dependencies as follows:
+A->B
+B->E
+C->D
+Identify that relation is in which normal form and the candidate key by determining the prime and non-prime attributes. Apply the decomposition if needed to remove the redundancy. Identify how many new tables will be formed after the decomposition.
+
+Sol- Since attributes A and C never appear on the RHS of any dependency, they must be part of every candidate key.
+Closures:
+• (AC)+ = ABCDE
+
+Keys:
+• Candidate Keys = {AC}
+• PA = {A, C}
+• NPA = {B, D, E}
+
+Normalization check:
+• In BCNF, dependencies A->B, B->E and C->D violate BCNF because A, B and C are not superkeys.
+• In 3NF, dependency B->E violates 3NF as E is a non-prime attribute.
+• In 2NF, partial dependencies A->B and C->D exist on candidate key AC, so 2NF is violated.
+• In 1NF, the relation satisfies 1NF.
+
+Decomposition:
+R1(A, B)
+R2(B, E)
+R3(C, D)
+R4(A, C)
+Number of new relations formed = 4
+
+Q15. Raj faces a problem in resolving the decomposition issue with the relation R having attributes as (A, B, C, D, E, F, G, H, I, J) having functional dependencies set as:
+AB->C
+B->F
+F->GH
+D->IJ
+A->DE
+Determine the highest normal form of relation R by determining the prime and non-prime fields. Check if relation is in 3NF or not. If not then remove the redundancy and decompose the relation. Also identify the possible number of relations after the decomposition and check if the decomposition is lossy or loss-less.
+
+Sol- Since attributes A and B never appear on the RHS of any dependency, they must be part of every candidate key.
+Closures:
+• (AB)+ = ABCDEFGHIJ
+
+Keys:
+• Candidate Keys = {AB}
+• PA = {A, B}
+• NPA = {C, D, E, F, G, H, I, J}
+
+Normalization check:
+• In BCNF, dependencies B->F, F->GH, D->IJ and A->DE violate BCNF because B, F, D and A are not superkeys.
+• In 3NF, dependencies B->F and F->GH violate 3NF as RHS contains non-prime attributes.
+• In 2NF, partial dependencies A->DE and B->F exist on candidate key AB, so 2NF is violated.
+• In 1NF, the relation satisfies 1NF.
+
+Decomposition:
+R1(A, B, C)
+R2(B, F)
+R3(F, G, H)
+R4(A, D, E)
+R5(D, I, J)
+Number of relations formed = 5
+The decomposition is loss-less.
