@@ -1,0 +1,90 @@
+--G5-23BCS10766_Neha Sharma_Session08
+
+Q9. Relation R(ABCDEFGHI) having dependencies as:
+AB->C
+BD->EF
+AD->GH
+A->I
+Highest normal form? C.K set?
+
+Sol- Since attributes B and D never appear on the RHS of any dependency, they must be part of every candidate key.
+Closures:
+• (ABD)+ = ABCDEFGHI
+
+Keys:
+• Candidate Keys = {ABD}
+• PA = {A, B, D}
+• NPA = {C, E, F, G, H, I}
+
+Normalization check:
+• In BCNF, dependencies AB->C, BD->EF, AD->GH and A->I violate BCNF because their LHS are not superkeys.
+• In 3NF, dependencies AB->C and A->I violate 3NF as RHS has non-prime attributes and LHS is not a superkey.
+• In 2NF, partial dependency AB->C exists on candidate key ABD, so 2NF is violated.
+• In 1NF, the relation satisfies 1NF as all attributes are atomic.
+
+Q10. Relation R(ABCDE) having dependencies as:
+AB->CD
+D->A
+BC->DE
+Highest normal form? C.K set?
+
+Sol- Since attribute B never appears on the RHS of any dependency, it must be part of every candidate key.
+Closures:
+• (AB)+ = ABCDE
+• (BC)+ = BCDEA
+
+Keys:
+• Candidate Keys = {AB, BC}
+• PA = {A, B, C}
+• NPA = {D, E}
+
+Normalization check:
+• In BCNF, dependencies D->A violate BCNF because D is not a superkey.
+• In 3NF, dependency D->A violates 3NF as A is a prime attribute but D is not a superkey.
+• In 2NF, no partial dependency exists, so 2NF is satisfied.
+• In 1NF, the relation satisfies 1NF.
+
+Q11. Consider a relation P having fields F1, F2, F3, F4, F5 with the functional dependencies as follows:
+F1->F3
+F2->F4
+(F1,F2)->F5
+In terms of normalization, this table is in which normal form. Describe the prime and non-prime attributes.
+
+Sol- Since F1 and F2 together determine all attributes, they form the candidate key.
+Closures:
+• (F1F2)+ = F1F2F3F4F5
+
+Keys:
+• Candidate Keys = {F1, F2}
+• PA = {F1, F2}
+• NPA = {F3, F4, F5}
+
+Normalization check:
+• In BCNF, dependencies F1->F3 and F2->F4 violate BCNF because F1 and F2 are not superkeys.
+• In 3NF, dependencies F1->F3 and F2->F4 violate 3NF as RHS has non-prime attributes.
+• In 2NF, partial dependencies F1->F3 and F2->F4 exist, so 2NF is violated.
+• In 1NF, the relation satisfies 1NF.
+
+Q12. DBA of a university information management system wants to remove redundancy by considering the following dependencies and relation R(R_N, Name, Dob, Age) for the system. Identify relevant candidate keys and normal form.
+Dob->Age
+Name->Rno
+Age->Eligibility
+Rno->Name
+C_N->Cname
+C_N->Instructor
+(R_N, C_N)->Grade
+
+Sol- Since R_N and C_N together determine Grade, they form the candidate key.
+Closures:
+• (R_N, C_N)+ = R_N, C_N, Name, Dob, Age, Eligibility, Cname, Instructor, Grade
+
+Keys:
+• Candidate Keys = {R_N, C_N}
+• PA = {R_N, C_N}
+• NPA = {Name, Dob, Age, Eligibility, Cname, Instructor, Grade}
+
+Normalization check:
+• In BCNF, dependencies Dob->Age and Age->Eligibility violate BCNF because Dob and Age are not superkeys.
+• In 3NF, Age->Eligibility violates 3NF as Eligibility is non-prime.
+• In 2NF, no partial dependency exists, so 2NF is satisfied.
+• In 1NF, the relation satisfies 1NF.
